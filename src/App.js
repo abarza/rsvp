@@ -1,6 +1,6 @@
-import React, { Component } from "react"
+import React, { Component } from "react" 
 import "./App.css"
-import GuestList from "./GuestList"
+import GuestList from "./GuestList" 
 
 class App extends Component {
 
@@ -8,32 +8,41 @@ class App extends Component {
     guests: [
       {
         name: "Treasure",
-        isConfirmed: false
+        isConfirmed: false,
+        isEditing: false
       },
       {
         name: "nick",
-        isConfirmed: true
+        isConfirmed: true,
+        isEditing: false
       },
       {
         name: "pancho",
-        isConfirmed: true
+        isConfirmed: true,
+        isEditing: true
       }
     ]
   }
 
-  toggleConfirmationAt = indexToChange => 
+  toggleGuestPropertynAt = (property, indexToChange) => 
     this.setState({
       guests: this.state.guests.map((guest, index) => {
         if (index === indexToChange) {
           return {
             //name: guest.name,
             ...guest,
-            isConfirmed: !guest.isConfirmed
+            [property]: !guest[property]
           }
         }
         return guest
       })
     })
+
+  toggleConfirmationAt = index =>
+    this.toggleGuestPropertynAt("isConfirmed", index)
+    
+  toggleEditingAt = index =>
+    this.toggleGuestPropertynAt("isEditing", index)
 
   getTotalInvited = () => this.state.guest.length
   // getAttendingGuests = () =>
@@ -73,8 +82,10 @@ class App extends Component {
               </tr>
             </tbody>
           </table>
-          <GuestList guests={this.state.guests} 
-            toggleConfirmationAt={this.toggleConfirmationAt} />
+          <GuestList 
+            guests={this.state.guests} 
+            toggleConfirmationAt={this.toggleConfirmationAt}
+            toggleEditingAt={this.toggleEditingAt} />
         </div>
       </div>
     )
