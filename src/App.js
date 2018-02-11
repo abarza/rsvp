@@ -21,6 +21,20 @@ class App extends Component {
     ]
   }
 
+  toggleConfirmationAt = indexToChange => 
+    this.setState({
+      guests: this.state.guests.map((guest, index) => {
+        if (index === indexToChange) {
+          return {
+            //name: guest.name,
+            ...guest,
+            isConfirmed: !guest.isConfirmed
+          }
+        }
+        return guest
+      })
+    })
+
   getTotalInvited = () => this.state.guest.length
   // getAttendingGuests = () =>
   // getUnconfirmedGuests = () =>
