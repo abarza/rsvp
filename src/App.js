@@ -140,7 +140,8 @@ class App extends Component {
             toggleEditingAt={this.toggleEditingAt}
             setNameAt={this.setNameAt}
             isFiltered={this.state.isFiltered}
-            removeGuestsAt={this.removeGuestsAt} />
+            removeGuestsAt={this.removeGuestsAt}
+            pendingGuest={this.state.pendingGuest} />
         </div>
       </div>
     )

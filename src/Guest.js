@@ -21,7 +21,6 @@ const Guest = props =>
     <button onClick={props.handleRemove}>Remove</button>
   </li>
 
-
 Guest.PropTypes = {
   name: PropTypes.string.isRequired,
   isConfirmed: PropTypes.bool.isRequired,
